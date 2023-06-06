@@ -8,9 +8,9 @@
 <div align="center">
 
 
-# novabot-plugin-example
+# BUPT-Rest-Classrooms
 
-_✨ NovaBot 插件简单描述 ✨_
+_✨ 简单的 空闲教室 获取方案 ✨_
 
 <a href="./LICENSE">
     <img src="https://img.shields.io/github/license/owner/nonebot-plugin-example.svg" alt="license">
@@ -18,87 +18,40 @@ _✨ NovaBot 插件简单描述 ✨_
 <a href="https://pypi.python.org/pypi/nonebot-plugin-example">
     <img src="https://img.shields.io/pypi/v/nonebot-plugin-example.svg" alt="pypi">
 </a>
-<img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="python">
+<img src="https://img.shields.io/badge/python-3.9+-blue.svg" alt="python">
 
 </div>
 
-这是一个 Nova-Bot 插件项目的模板库, 你可以直接使用本模板创建你的 Nova-Bot 插件项目的仓库
-
-模板库使用方法:
-
-1. 点击仓库中的 "Use this template" 按钮, 输入仓库名与描述, 点击 "  Create repository from template" 创建仓库
-2. 在创建好的新仓库中, 在 "Add file" 菜单中选择 "Create new file", 在新文件名处输入`LICENSE`, 此时在右侧会出现一个 "Choose a license template" 按钮, 点击此按钮选择开源协议模板, 然后在最下方提交新文件到主分支
-3. 全局替换`owner`为仓库所有者ID; 全局替换`novabot-plugin-example`为插件名; 全局替换`novabot_plugin_example`为包名; 修改 python 徽标中的版本为你插件的运行所需版本
-4. 修改 README 中的插件名和插件描述, 并在下方填充相应的内容
 
 ## 📖 介绍
 
-这里是插件的详细介绍部分
+使用企业微信微教学来看空闲教室实在是不够养眼，想要泡在教室一天？人工取并集的你（其实是我）真的很狼狈。于是这个功能出现了，在小群内用了很久之后决定发出来。
+
+### 如何做到
+抓一下路由看 API，逆一下 webpack 看登录，解决了
+
+接着大量使用~~丑陋难读~~美观简洁的 Python 内置函数对时间进行处理分片打包
+
+### 特点
+- [X] ~~获取特定时间的空闲教室~~好吧看了下代码好像没写特定时间，不过改起来很容易，自己动手丰衣足食（然后大概 beautifier 也要改改）
+- [X] 获取全天空闲教室（从~~指定时间~~调用时开始到当天晚上截止都为空闲的教室）
+- [X] 不太优雅的 JSON 缓存机制
+- [X] 异步解决方案，自动登录
+- [X] 可获取不同校区（因为群友都是网安的，全在沙河，所以 bot 没写本部的，可以通过 `get_content(..., shahe=False)` 指定本部，懒得写了）
 
 ## 💿 安装
 
-<details>
-<summary>使用 nb-cli 安装</summary>
-在 Nova-Bot 项目的根目录下打开命令行, 输入以下指令即可安装
-
-
-    nb plugin install novabot-plugin-example
-
-</details>
-
-<details>
-<summary>使用包管理器安装</summary>
-在 Nova-Bot 项目的插件目录下, 打开命令行, 根据你使用的包管理器, 输入相应的安装命令
-
-
-<details>
-<summary>pip</summary>
-
-
-    pip install novabot-plugin-example
-
-</details>
-
-<details>
-<summary>pdm</summary>
-
-
-    pdm add novabot-plugin-example
-
-</details>
-
-<details>
-<summary>poetry</summary>
-
-
-    poetry add novabot-plugin-example
-
-</details>
-
-<details>
-<summary>conda</summary>
-
-
-    conda install novabot-plugin-example
-
-</details>
-
-打开 Nova-Bot 项目的 `bot.py` 文件, 在其中写入
-
-    nonebot.load_plugin('novabot_plugin_example')
-
-</details>
-
+懒得打包了，就这样吧
 <details>
 <summary>从 github 安装</summary>
-在 Nova-Bot 项目的插件目录下, 打开命令行, 输入以下命令克隆此储存库
+在 Nonebot 项目的插件目录下, 打开命令行, 输入以下命令克隆此储存库
 
 
-    git clone https://github.com/owner/novabot-plugin-example.git
+    git clone https://github.com/Nova-Noir/BUPT-Rest-Classrooms.git
 
-打开 Nova-Bot 项目的 `bot.py` 文件, 在其中写入
+打开 Nonebot 项目的 `bot.py` 文件, 在其中写入
 
-    nonebot.load_plugin('src.plugins.novabot_plugin_example')
+    nonebot.load_plugin('src.plugins.BUPT-Rest-Classrooms')
 
 </details>
 
@@ -108,8 +61,8 @@ _✨ NovaBot 插件简单描述 ✨_
 
 | 配置项  | 必填 | 默认值 |   说明   |
 | :-----: | :--: | :----: | :------: |
-| 配置项1 |  是  |   无   | 配置说明 |
-| 配置项2 |  否  |   无   | 配置说明 |
+| BUPT_USERNO |  是  |   无   | 学号 |
+| BUPT_PWD |  是 |   无   | 教务管理微信的密码（大概和教务管理一样吧） |
 
 ## 🎉 使用
 
@@ -117,9 +70,8 @@ _✨ NovaBot 插件简单描述 ✨_
 
 | 指令  | 权限 | 需要@ | 范围 |   说明   |
 | :---: | :--: | :---: | :--: | :------: |
-| 指令1 | 主人 |  否   | 私聊 | 配置说明 |
-| 指令2 | 群员 |  是   | 群聊 | 配置说明 |
+| 全天教室 | 群员 |  是   | 群聊 | 获取全天教室，别称：全天空闲教室 |
+| 空闲教室 | 群员 |  是   | 群聊 | 获取当前空闲教室 |
 
 ### 效果图
 
-如果有效果图的话
