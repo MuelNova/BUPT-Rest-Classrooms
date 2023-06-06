@@ -42,6 +42,9 @@ _✨ 简单的 空闲教室 获取方案 ✨_
 ## 💿 安装
 
 懒得打包了，就这样吧
+
+需要 `aiohttp`，`pydantic`，`pycryptodome` 和 `urllib`，因为自己 bot 有这些所以就直接用了，如果单纯的作为一个空闲教室解决方案可能会显得臃肿。
+
 <details>
 <summary>从 github 安装</summary>
 在 Nonebot 项目的插件目录下, 打开命令行, 输入以下命令克隆此储存库
